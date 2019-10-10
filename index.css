@@ -1,24 +1,114 @@
+/*===================
+   custom properties
+  ===================*/
 :root {
     --bg-color: #ddd;
     --link-color: #444;
+    --link-focus-bg: #ccc;
+    --sans-serif-font: Roboto, Ubuntu, "Liberation Sans", "DejaVu Sans", Helvetica, Arial, sans-serif;
+    --serif-font: Georgia, serif;
+}
+
+/*======================
+   grid + media queries
+  ======================*/
+
+@media screen and (min-aspect-ratio: 3 / 4){
+    @supports (display: grid) {
+        #grid {
+            display: grid;
+            grid-template-areas:
+                    "header header header"
+                    " main   main   main "
+                    "footer footer footer";
+        }
+        header { grid-area: header; }
+        main { grid-area: main; }
+        footer { grid-area: footer; }
+    }
+}
+
+@media screen and (max-aspect-ratio: 3 / 4){
+}
+
+/*===================
+    general layout
+  ===================*/
+
+body {
+    margin: 0;
+    font-family: var(--sans-serif-font);
+}
+
+main {
+    margin: 0 2%;
+}
+
+h2,
+h3  {
+    text-align: center;
+}
+
+figure {
+    margin: 0;
+    text-align: center;
+}
+
+figure img {
+    display: inline-block;
+    text-align: center;
+}
+
+footer {
+    background-color: var(--link-focus-bg);
+    padding: 1rem 0;
+}
+
+footer p {
+    text-align: center;
+}
+
+footer ul {
+    margin: 0 20%;
+}
+
+
+/*===================
+        navbar
+  ===================*/
+
+.icon {
+    background:url('fridge.svg') no-repeat left;
+    width: 20%;
+    height: 100%;
+    background-size:contain;
+    vertical-align: baseline;
+    font-size: 100%;
+    display: inline-block;
+    text-indent: -9999em;
 }
 
 /* credz: https://jsfiddle.net/joshnh/srNVQ/ */
+header {
+    position: sticky;
+    top: 0;
+}
 nav ul {
     background: var(--bg-color);
     font-size: 0;
     list-style: none;
     margin: 0;
     padding: 0;
-    text-align: center;
+    /*text-align: left;*/
     width: 100%;
+
 }
 nav li {
     display: inline-block;
     margin: 0;
     padding: 0;
     position: relative;
-    min-width: 20%;
+    min-width: 10%;
 }
 nav a {
     background: var(--bg-color);
@@ -37,8 +127,10 @@ nav a {
 nav .dropdown:after {
     content: ' \25bc';
 }
-nav li:hover a {
-    background: #ccc;
+nav li:hover a,
+nav li a:focus {
+    background: var(--link-focus-bg);
+    outline: none;
 }
 nav li ul {
     left: 0;
