@@ -10,10 +10,10 @@
 </head>
 <body>
 <div id="grid">
-<header>
+<header id="masthead">
 <nav class="navbar">
     <ul>
-        <li><a href="index.html"><span class="icon">a</span>Fridge News</a></li>
+        <li><a href="index.html"><span id="icon">a</span>Fridge News</a></li>
         <li>
             <a class="dropdown" href="#">Categories</a>
             <ul>
@@ -21,24 +21,26 @@
                 <li><a href="#">Culture</a></li>
             </ul>
         </li>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Write</a></li>
-        <li><a href="#">Log In</a></li>
+        <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
+        <li><a href="#"><i class="fas fa-edit"></i> Write</a></li>
+        <li><a href="#"><i class="fas fa-user"></i> Log In</a></li>
     </ul>
 </nav>
 </header>
 <main>
     <article>
-        <h2>Fridge Found Floating in Space</h2>
-        <p class="ingress"><em>
-            After its long flight through the rings of Saturn, a fridge of mysterious origin was caught by a spacewalking astronaut on the ISS and brought to Earth for inspection.
-            Inside were the remains of an unknown biological life form - and a pile of ancient floppy disks.
-            The floppies contained impressive amounts of text - newspaper articles, essays, even a few poems.
-            Here are a few snippets from the fridge's collection.
-        </em></p>
+        <header>
+            <h2>Fridge Found Floating in Space</h2>
+            <p class="ingress"><em>
+                After its long flight through the rings of Saturn, a fridge of mysterious origin was caught by a spacewalking astronaut on the ISS and brought to Earth for inspection.
+                Inside were the remains of an unknown biological life form - and a pile of ancient floppy disks.
+                The floppies contained impressive amounts of text - newspaper articles, essays, even a few poems.
+                Here are a few snippets from the fridge's collection.
+            </em></p>
+        </header>
         <figure>
             <img src="https://i.imgur.com/puQs66y.png" alt="Fridge floating in space" />
-            <figcaption>The infamous space-floating fridge</figcaption>
+            <figcaption><p>The infamous space-floating fridge</p></figcaption>
         </figure>
         <h3>Space Cows Demand We Go Vegan</h3>
         <p>
@@ -51,14 +53,15 @@
     <section class="comments">
         <p>
             <label for="comment-text">Comment:</label><br>
-            <input type="text" id="comment-text" /><br>
-            <input type="button" id="comment-submit" value="Submit">
+            <textarea id="comment-text" cols="80" rows="10"></textarea><br>
+            <button id="comment-submit">Submit</button>
         </p>
     </section>
 </main>
 <footer>
     <p>Copyright &copy; 2019 Fridge News</p>
     <p>Logo credit: Icon made by <a href="https://www.freepik.com/home">Freepik</a> from <a href="http://www.flaticon.com/">www.flaticon.com</a></p>
+<!--    <p>Logo credit: Fridge by Mello from the Noun Project</p>-->
     <ul>
         <li><a href="mailto:contact@fridge.news" target="_top">Email</a></li>
     </ul>

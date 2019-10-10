@@ -1,19 +1,29 @@
-/*===================
+/*===================*\
    custom properties
-  ===================*/
+\*===================*/
 :root {
-    --bg-color: #ddd;
-    --link-color: #444;
-    --link-focus-bg: #ccc;
+    --section-text: #222; /* 444 fails WCAG AAA with focused bg */
+    --section-background: #ddd;
+    --focused-background: #ccc;
+    --dropdown-focus: #bbb;
+    /*--link-text: TODO;*/
     --sans-serif-font: Roboto, Ubuntu, "Liberation Sans", "DejaVu Sans", Helvetica, Arial, sans-serif;
-    --serif-font: Georgia, serif;
+    --serif-font: Georgia, serif; /* TODO */
 }
 
-/*======================
+/*======================*\
    grid + media queries
-  ======================*/
+\*======================*/
 
-@media screen and (min-aspect-ratio: 3 / 4){
+@media screen and (min-width: 961px){
+
+    /* margin around articles on wider screens */
+    main {
+        margin: 0 auto;
+        width: 950px;
+    }
+
+    /* simple grid layout */
     @supports (display: grid) {
         #grid {
             display: grid;
@@ -28,21 +38,47 @@
     }
 }
 
-@media screen and (max-aspect-ratio: 3 / 4){
+@media screen and (max-width: 960px){
+
+    /* tiny margin around content on narrow screens */
+    main {
+        margin: 0 2%;
+    }
+
+    figure img {
+        width: 100%;
+    }
 }
 
-/*===================
+/*@media screen and (max-width: 480px) {
+
+    !* show logo above navbar on extra smol screens *!
+    !* TODO this is WIP *!
+    #masthead:before {
+        content: 'Fridge News';
+        text-align: center;
+        background-color: var(--focused-background);
+    }
+
+    nav #icon {
+        display: none;
+    }
+}*/
+
+/*===================*\
     general layout
-  ===================*/
+\*===================*/
+
+/* TODO temporarily ditching the logo */
+nav #icon {
+    display: none;
+}
 
 body {
     margin: 0;
     font-family: var(--sans-serif-font);
 }
 
-main {
-    margin: 0 2%;
-}
 
 h2,
 h3  {
@@ -60,8 +96,9 @@ figure img {
 }
 
 footer {
-    background-color: var(--link-focus-bg);
+    background-color: var(--section-background);
     padding: 1rem 0;
+    color: var(--section-text);
 }
 
 footer p {
@@ -72,12 +109,15 @@ footer ul {
     margin: 0 20%;
 }
 
+a {
+    /*color: var(--link-text);*/
+}
 
-/*===================
+/*===================*\
         navbar
-  ===================*/
+\*===================*/
 
-.icon {
+#icon {
     background:url('fridge.svg') no-repeat left;
     width: 20%;
     height: 100%;
@@ -88,34 +128,37 @@ footer ul {
     text-indent: -9999em;
 }
 
-/* credz: https://jsfiddle.net/joshnh/srNVQ/ */
-header {
+#masthead {
     position: sticky;
     top: 0;
 }
+
+/* credz: https://jsfiddle.net/joshnh/srNVQ/ */
 nav ul {
-    background: var(--bg-color);
+    background: var(--section-background);
     font-size: 0;
     list-style: none;
     margin: 0;
     padding: 0;
     /*text-align: left;*/
     width: 100%;
-
 }
+
 nav li {
     display: inline-block;
     margin: 0;
     padding: 0;
     position: relative;
-    min-width: 10%;
+    min-width: 15%;
+    width: fit-content;
 }
+
 nav a {
-    background: var(--bg-color);
-    color: var(--link-color);
+    background: var(--section-background);
+    color: var(--section-text);
     display: block;
-    font: bold 16px/50px sans-serif;
-    padding: 0 25px;
+    font: bold 1rem/3.125rem sans-serif; /* was 16px/50px */
+    padding: 0 1.5625rem;/*25px*/
     text-align: center;
     text-decoration: none;
     -webkit-transition: all .25s ease;
@@ -124,14 +167,17 @@ nav a {
     -o-transition: all .25s ease;
     transition: all .25s ease;
 }
+
 nav .dropdown:after {
     content: ' \25bc';
 }
+
 nav li:hover a,
 nav li a:focus {
-    background: var(--link-focus-bg);
+    background: var(--focused-background);
     outline: none;
 }
+
 nav li ul {
     left: 0;
     opacity: 0;
@@ -145,14 +191,24 @@ nav li ul {
     -o-transition: all .25s ease;
     transition: all .25s ease;
 }
+
 nav li:hover ul {
     opacity: 1;
     top: 50px;
     visibility: visible;
 }
+
 nav li ul li {
     width: 100%;
 }
-nav li ul a:hover {
-    background: #bbb;
+
+/* mark item in dropdown when selected... please... */
+nav li ul a:hover,
+nav li ul a:focus,
+nav li a:active + ul a:hover,
+nav li a:hover + ul a:hover,
+nav li a:hover + ul a:focus,
+nav li a:active + ul a:focus {
+    background: var(--dropdown-focus);
 }
+
