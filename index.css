@@ -2,13 +2,15 @@
    custom properties
 \*===================*/
 :root {
-    --section-text: #222; /* 444 fails WCAG AAA with focused bg */
+    --section-text: #212121; /* 444 fails WCAG AAA with focused bg */
     --section-background: #ddd;
     --focused-background: #ccc;
-    --dropdown-focus: #bbb;
+    --active-background: #bbb; /* #FF5D66; */
+    --active-text: var(--section-text);/* #FFFFFF; */
     /*--link-text: TODO;*/
-    --sans-serif-font: Roboto, Ubuntu, "Liberation Sans", "DejaVu Sans", Helvetica, Arial, sans-serif;
-    --serif-font: Georgia, serif; /* TODO */
+    --sans-serif-font: Roboto, Ubuntu, "Helvetica Neue", Helvetica,
+        "Noto Sans", "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+    --serif-font: Georgia, "Liberation Serif", "DejaVu Serif", serif; /* TODO */
 }
 
 /*======================*\
@@ -24,6 +26,7 @@
     }
 
     /* simple grid layout */
+    /*  kinda superfluous */
     @supports (display: grid) {
         #grid {
             display: grid;
@@ -41,13 +44,26 @@
 @media screen and (max-width: 960px){
 
     /* tiny margin around content on narrow screens */
+    /* TODO rem instead */
     main {
         margin: 0 2%;
     }
 
-    figure img {
-        width: 100%;
+}
+
+@media screen and (max-width: 58rem) {
+
+    /* TODO avoid !important */
+    /* TODO add hamborger */
+
+    nav ul {
+        flex-direction: column !important;
     }
+
+    #masthead {
+        position: revert !important;
+    }
+
 }
 
 /*@media screen and (max-width: 480px) {
@@ -69,11 +85,6 @@
     general layout
 \*===================*/
 
-/* TODO temporarily ditching the logo */
-nav #icon {
-    display: none;
-}
-
 body {
     margin: 0;
     font-family: var(--sans-serif-font);
@@ -81,8 +92,9 @@ body {
 
 
 h2,
-h3  {
+h3 {
     text-align: center;
+    font-family: var(--serif-font);
 }
 
 figure {
@@ -93,6 +105,7 @@ figure {
 figure img {
     display: inline-block;
     text-align: center;
+    width: 100%;
 }
 
 footer {
@@ -117,17 +130,6 @@ a {
         navbar
 \*===================*/
 
-#icon {
-    background:url('fridge.svg') no-repeat left;
-    width: 20%;
-    height: 100%;
-    background-size:contain;
-    vertical-align: baseline;
-    font-size: 100%;
-    display: inline-block;
-    text-indent: -9999em;
-}
-
 #masthead {
     position: sticky;
     top: 0;
@@ -142,22 +144,25 @@ nav ul {
     padding: 0;
     /*text-align: left;*/
     width: 100%;
+    /* let's use the FLEXX */
+    display: flex;
+    flex-direction: row;
 }
 
 nav li {
-    display: inline-block;
     margin: 0;
     padding: 0;
-    position: relative;
-    min-width: 15%;
-    width: fit-content;
+}
+
+nav .separator {
+    flex: auto;
 }
 
 nav a {
     background: var(--section-background);
     color: var(--section-text);
     display: block;
-    font: bold 1rem/3.125rem sans-serif; /* was 16px/50px */
+    font: bold 1rem/3.125rem var(--sans-serif-font); /* was 16px/50px */
     padding: 0 1.5625rem;/*25px*/
     text-align: center;
     text-decoration: none;
@@ -168,47 +173,13 @@ nav a {
     transition: all .25s ease;
 }
 
-nav .dropdown:after {
-    content: ' \25bc';
-}
-
 nav li:hover a,
 nav li a:focus {
     background: var(--focused-background);
     outline: none;
 }
 
-nav li ul {
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 35px;
-    visibility: hidden;
-    z-index: 1;
-    -webkit-transition: all .25s ease;
-    -moz-transition: all .25s ease;
-    -ms-transition: all .25s ease;
-    -o-transition: all .25s ease;
-    transition: all .25s ease;
+nav li a.active {
+    background: var(--active-background);
+    color: var(--active-text);
 }
-
-nav li:hover ul {
-    opacity: 1;
-    top: 50px;
-    visibility: visible;
-}
-
-nav li ul li {
-    width: 100%;
-}
-
-/* mark item in dropdown when selected... please... */
-nav li ul a:hover,
-nav li ul a:focus,
-nav li a:active + ul a:hover,
-nav li a:hover + ul a:hover,
-nav li a:hover + ul a:focus,
-nav li a:active + ul a:focus {
-    background: var(--dropdown-focus);
-}
-
