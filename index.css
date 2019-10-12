@@ -6,6 +6,7 @@
     --section-background: #ddd;
     --focused-background: #ccc;
     --active-background: #bbb; /* #FF5D66; */
+    --logo-background: lightblue;
     --active-text: var(--section-text);/* #FFFFFF; */
     /*--link-text: TODO;*/
     --sans-serif-font: Roboto, Ubuntu, "Helvetica Neue", Helvetica,
@@ -24,6 +25,12 @@
         margin: 0 auto;
         width: 950px;
     }
+
+    nav ul {
+        flex-direction: row;
+    }
+
+    /* sticky navbar since screen is wide enough to fit it */
 
     /* simple grid layout */
     /*  kinda superfluous */
@@ -48,22 +55,21 @@
     main {
         margin: 0 2%;
     }
-
-}
-
-@media screen and (max-width: 58rem) {
-
     /* TODO avoid !important */
     /* TODO add hamborger */
 
     nav ul {
-        flex-direction: column !important;
+        flex-direction: column;
     }
 
     #masthead {
         position: revert !important;
     }
 
+    .separator {
+        height: 0.2rem;
+        background: var(--section-text);
+    }
 }
 
 /*@media screen and (max-width: 480px) {
@@ -138,20 +144,23 @@ a {
 /* credz: https://jsfiddle.net/joshnh/srNVQ/ */
 nav ul {
     background: var(--section-background);
-    font-size: 0;
+    /*font-size: 0;*/
     list-style: none;
     margin: 0;
     padding: 0;
     /*text-align: left;*/
-    width: 100%;
+    /*width: 100%;*/
     /* let's use the FLEXX */
     display: flex;
-    flex-direction: row;
 }
 
 nav li {
     margin: 0;
     padding: 0;
+}
+
+#logo {
+    background: var(--logo-background);
 }
 
 nav .separator {
