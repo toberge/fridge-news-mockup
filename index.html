@@ -18,7 +18,7 @@
             Fridge News</a>
         </li>
         <li class="separator"></li>
-        <li><a class="active" href="#news"> News</a></li>
+        <li><a href="#news"> News</a></li>
         <li><a href="#culture"> Culture</a></li>
         <li><a href="#science"> Science</a></li>
         <li><a href="#politics"> Politics</a></li>
@@ -42,7 +42,7 @@
         </header>
         <figure>
             <img src="https://i.imgur.com/puQs66y.png" alt="Fridge floating in space" />
-            <figcaption><p>The infamous space-floating fridge</p></figcaption>
+            <figcaption><p><em>Image:</em> The infamous space-floating fridge</p></figcaption>
         </figure>
         <h3>Space Cows Demand We Go Vegan</h3>
         <p>
@@ -53,9 +53,28 @@
         </p>
     </article>
     <section class="comments">
+        <h2>Comments</h2>
+        <div class="comment">
+            <p>
+                <em><span class="author">Grumbling Grevory</span> said:</em>
+            </p>
+            <p>
+                I really hate this article...
+            </p>
+        </div>
+        <div class="comment">
+            <p>
+                <em><span class="author">Somebody</span> said:</em>
+            </p>
+            <p>
+                Everything is fine.<br>
+                It really is.
+            </p>
+        </div>
+        <h2>Leave your own comment</h2>
         <p>
             <label for="comment-text">Comment:</label><br>
-            <textarea id="comment-text" cols="80" rows="10"></textarea><br>
+            <textarea id="comment-text" cols="80" rows="10" aria-label="Comment:"></textarea><br>
             <button id="comment-submit">Submit</button>
         </p>
     </section>
